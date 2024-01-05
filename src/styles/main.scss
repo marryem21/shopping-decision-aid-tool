@@ -1,0 +1,11 @@
+// blocks
+@forward './blocks/btn.scss';
+
+//global
+@forward './global/base.scss';
+@forward './global/fonts.scss';
+@forward './global/root.scss';
+@forward './global/typography.scss';
+
+//layouts
+@forward './layouts/home.scss';

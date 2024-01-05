@@ -1,0 +1,10 @@
+
+:where(html) {
+	--fs-100 : 1rem;
+}
+
+.medium {
+	font-size: var(--fs-100);
+	line-height: 1.5;
+	font-weight: 600;
+}
