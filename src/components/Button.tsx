@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
 	text: string
@@ -7,7 +7,11 @@ type Props = {
 }
 
 export default function Button({text, to}: Props) {
-  return (
-	 <a href={to} className="btn"><span className="btn__text medium">{text}</span></a>
-  )
+	const navigate = useNavigate();
+	const handleClick = () => {
+		navigate('/' + to);
+	 };
+	return (
+		<button onClick={handleClick} className="btn"><span className="btn__text medium">{text}</span></button>
+	)
 }

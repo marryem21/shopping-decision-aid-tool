@@ -1,12 +1,13 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 type Props = {}
 
 function Products({}: Props) {
   return (
-<div className="Products">
-	<Navbar/>
-</div>  )
+	<div className="Products">
+		<h1>products</h1>
+	</div>
+
+)
 }
 
 export default Products

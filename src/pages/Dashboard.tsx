@@ -5,7 +5,7 @@ type Props = {}
 function Dashboard({}: Props) {
   return (
 <div className="dashboard">
-	<Navbar/>
+	<h1>dashboard</h1>
 </div>  )
 }
 

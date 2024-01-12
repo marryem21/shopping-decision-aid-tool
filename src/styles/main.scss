@@ -1,5 +1,6 @@
 // blocks
 @forward './blocks/btn.scss';
+@forward './blocks/navbar.scss';
 
 //global
 @forward './global/base.scss';
@@ -9,3 +10,4 @@
 
 //layouts
 @forward './layouts/home.scss';
+@forward './layouts/signup.scss';
