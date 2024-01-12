@@ -1,5 +1,8 @@
 
 import React, {useState} from 'react'
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "../hooks/redux-hooks";
+import { login } from "../slices/authSlice";
 
 type Props = {}
 
@@ -10,51 +13,52 @@ interface LoginFormData {
 
 function Login({}: Props) {
 
-	const [formData, setFormData] = useState<LoginFormData>({
-		email: '',
-		password: '',
-	 });
+	const dispatch = useAppDispatch();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-	 const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData((prevData) => ({
-		  ...prevData,
-		  [name]: value,
-		}));
-	 };
 
-	 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		// You can handle the form submission logic here, e.g., make an API call.
-
-		console.log('Form submitted:', formData);
-	 };
+	const handleLogin = async () => {
+		// This is only a basic validation of inputs. Improve this as needed.
+		if (email && password) {
+			try {
+			await dispatch(
+				login({
+					email,
+					password,
+				})
+			).unwrap();
+			} catch (e) {
+			console.error(e);
+			}
+		} else {
+			console.log("other error")
+		}
+	};
 
   return (
 	 <div className='login'>
-		<form onSubmit={handleSubmit} className="signup__form">
+		<form onSubmit={handleLogin} className="signup__form">
 			<label>
 			Email:
 			<input
 				type="email"
 				name="email"
-				value={formData.email}
-				onChange={handleInputChange}
+				value={email}
+				onChange={(e) => setEmail(e.target.value)}
 				required
 			/>
 			</label>
-
 			<label>
 			Password:
 			<input
 				type="password"
 				name="password"
-				value={formData.password}
-				onChange={handleInputChange}
+				value={password}
+				onChange={(e) => {setPassword(e.target.value);}}
 				required
 			/>
 			</label>
-
 			<button className="signup__btn" type="submit">Login</button>
 		</form>
 	 </div>
